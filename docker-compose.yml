@@ -1,0 +1,41 @@
+services:
+  heart-api:
+    build: .
+    image: heart-api:latest
+    container_name: heart-api
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    networks: [obs]
+
+  prometheus:
+    image: prom/prometheus:v2.53.0
+    container_name: prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    depends_on: [heart-api]
+    networks: [obs]
+
+  grafana:
+    image: grafana/grafana:11.1.0
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+    volumes:
+      - ./monitoring/grafana:/etc/grafana/provisioning:ro
+    ports:
+      - "3000:3000"
+    depends_on: [prometheus]
+    networks: [obs]
+
+networks:
+  obs:
+    driver: bridge

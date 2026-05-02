@@ -1,0 +1,30 @@
+{
+  "title": "Heart API Overview",
+  "uid": "heart-api-overview",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": {"from": "now-15m", "to": "now"},
+  "panels": [
+    {
+      "id": 1, "type": "stat", "title": "Total requests",
+      "gridPos": {"x": 0, "y": 0, "w": 6, "h": 4},
+      "targets": [{"expr": "sum(heart_api_requests_total)", "refId": "A"}]
+    },
+    {
+      "id": 2, "type": "timeseries", "title": "Request rate (per endpoint)",
+      "gridPos": {"x": 6, "y": 0, "w": 18, "h": 8},
+      "targets": [{"expr": "sum(rate(heart_api_requests_total[1m])) by (endpoint)", "refId": "A"}]
+    },
+    {
+      "id": 3, "type": "timeseries", "title": "p95 latency",
+      "gridPos": {"x": 0, "y": 8, "w": 12, "h": 8},
+      "targets": [{"expr": "histogram_quantile(0.95, sum(rate(heart_api_request_seconds_bucket[5m])) by (le, endpoint))", "refId": "A"}]
+    },
+    {
+      "id": 4, "type": "timeseries", "title": "Predictions by label",
+      "gridPos": {"x": 12, "y": 8, "w": 12, "h": 8},
+      "targets": [{"expr": "sum(rate(heart_api_predictions_total[1m])) by (label)", "refId": "A"}]
+    }
+  ]
+}

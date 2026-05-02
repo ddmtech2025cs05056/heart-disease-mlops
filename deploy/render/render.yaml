@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: heart-api
+    runtime: docker
+    plan: free
+    region: oregon
+    repo: https://github.com/dd-mtech123/heart-disease-mlops
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: "8000"
