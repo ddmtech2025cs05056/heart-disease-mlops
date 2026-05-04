@@ -14,8 +14,9 @@ extend-exclude = "notebooks|mlruns|data"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-q"
+addopts = "-v --tb=short --color=yes --disable-warnings -ra"
 filterwarnings = [
     "ignore::DeprecationWarning",
     "ignore::FutureWarning",
+    "ignore::PendingDeprecationWarning",
 ]

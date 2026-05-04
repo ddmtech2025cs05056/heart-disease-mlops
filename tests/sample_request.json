@@ -1,15 +1,15 @@
 {
-  "age": 63,
+  "age": 70,
   "sex": 1,
-  "cp": 3,
-  "trestbps": 145,
-  "chol": 233,
+  "cp": 4,
+  "trestbps": 180,
+  "chol": 320,
   "fbs": 1,
-  "restecg": 0,
-  "thalach": 150,
-  "exang": 0,
-  "oldpeak": 2.3,
-  "slope": 0,
-  "ca": 0,
-  "thal": 1
+  "restecg": 2,
+  "thalach": 100,
+  "exang": 1,
+  "oldpeak": 4.0,
+  "slope": 3,
+  "ca": 3,
+  "thal": 7
 }

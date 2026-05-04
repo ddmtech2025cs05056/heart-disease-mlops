@@ -28,7 +28,7 @@ def _ensure_model() -> Path:
     return path
 
 
-def test_root_and_health():
+def test_root_and_health(preserve_production_model):
     _ensure_model()
     client = TestClient(app)
     assert client.get("/").status_code == 200
@@ -36,7 +36,7 @@ def test_root_and_health():
     assert h["status"] == "ok" and h["model_loaded"] is True
 
 
-def test_predict_endpoint(sample_payload):
+def test_predict_endpoint(preserve_production_model, sample_payload):
     _ensure_model()
     client = TestClient(app)
     r = client.post("/predict", json=sample_payload)
@@ -47,7 +47,7 @@ def test_predict_endpoint(sample_payload):
     assert body["label"] in ("disease", "no_disease")
 
 
-def test_metrics_endpoint_exposes_prometheus():
+def test_metrics_endpoint_exposes_prometheus(preserve_production_model):
     _ensure_model()
     client = TestClient(app)
     client.get("/health")
