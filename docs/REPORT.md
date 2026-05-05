@@ -243,6 +243,8 @@ captured below and embedded in the README.
 
 ![Grafana](../screenshots/12_grafana_dashboard.png)
 ![Prometheus targets](../screenshots/13_prometheus_targets.png)
+![Prometheus query](../screenshots/06_prometheus_query.png)
+![/metrics endpoint](../screenshots/07_metrics_endpoint.png)
 
 ---
 
@@ -251,7 +253,7 @@ captured below and embedded in the README.
 - This document â€” `docs/REPORT.md` (also exported as `REPORT.docx`).
 - `README.md` covers setup, Docker, Kubernetes, Render, CI/CD, and layout.
 - `docs/architecture.md` includes a Mermaid + ASCII architecture diagram.
-- `screenshots/` contains 13 PNGs referenced from this report and the
+- `screenshots/` contains 15 PNGs referenced from this report and the
   demo video (`docs/demo_slideshow.mp4`).
 - `docs/NARRATION_SCRIPT.md` is the timed narration for the video.
 

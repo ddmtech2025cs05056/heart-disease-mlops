@@ -39,3 +39,6 @@ Thumbs.db
 
 # Docker
 *.log
+
+# Local-only observability stack (Prometheus + Grafana portable binaries, TSDB, Grafana SQLite)
+.obs/
