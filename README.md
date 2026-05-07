@@ -118,7 +118,8 @@ helm upgrade --install heart-api deploy/helm/heart-api
 kubectl port-forward svc/heart-api 8000:80
 ```
 
-**Deployed API URL:** `<DEPLOYED_URL>` *(fill in after deployment)*
+**Deployed API URL:** <https://heart-api-bxq0.onrender.com>
+*(Swagger: <https://heart-api-bxq0.onrender.com/docs> · Health: <https://heart-api-bxq0.onrender.com/health>)*
 
 ---
 

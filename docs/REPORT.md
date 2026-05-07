@@ -4,7 +4,7 @@
 **Author:** Deepak Dharmani (BITS ID: 2025CS05056)
 **Submission date:** 5-May-2026
 **Repository:** `https://github.com/dd-mtech123/heart-disease-mlops`
-**Deployed API URL:** `<DEPLOYED_URL>` *(see Â§10)*
+**Deployed API URL:** <https://heart-api-bxq0.onrender.com>
 
 ---
 
@@ -217,10 +217,24 @@ Docker web service from the GitHub repo with `/health` health-checks.
 Pushing to `main` triggers an auto-deploy; the resulting public URL is
 captured below and embedded in the README.
 
-**Deployed API URL:** `<DEPLOYED_URL>` *(fill in after first deploy)*
+**Deployed API URL:** <https://heart-api-bxq0.onrender.com>
+**Swagger:** <https://heart-api-bxq0.onrender.com/docs>
+**Health:** <https://heart-api-bxq0.onrender.com/health>
 
-![Deployed endpoint](../screenshots/10_loadbalancer_endpoint.png)
-![Swagger UI](../screenshots/11_swagger_ui.png)
+End-to-end verification (executed against the live URL):
+
+| Endpoint | Result |
+|---|---|
+| `GET /health` | `{"status":"ok","model_loaded":true,"version":"1.0.0"}` |
+| `POST /predict` (high-risk sample) | `prediction=1, label="disease", probability_disease=0.997` |
+| `POST /predict` (low-risk sample) | `prediction=0, label="no_disease", probability_disease=0.0045` |
+| `GET /metrics` | Emits Prometheus exposition; `/metrics` excluded from self-instrumentation |
+
+![Render service dashboard (Live)](../screenshots/14_render_dashboard.png)
+![Render build logs](../screenshots/15_render_logs.png)
+![Public Swagger UI](../screenshots/16_render_swagger.png)
+![Public /predict response](../screenshots/17_render_predict.png)
+![Local Swagger UI](../screenshots/11_swagger_ui.png)
 
 ---
 
@@ -270,10 +284,10 @@ captured below and embedded in the README.
 | Tests folder | `tests/` (4 files, 9 tests) |
 | GitHub Actions YAML | `.github/workflows/ci.yml` |
 | Deployment manifests + Helm chart | `deploy/k8s/`, `deploy/helm/heart-api/` |
-| Screenshot folder | `screenshots/` (13 PNGs) |
+| Screenshot folder | `screenshots/` (19 PNGs) |
 | Final 10-page report (.docx) | `docs/REPORT.docx` |
 | Demo video | `docs/demo_slideshow.mp4` |
-| Deployed API URL | `<DEPLOYED_URL>` (Render) â€” local: `kubectl port-forward svc/heart-api 8000:80` |
+| Deployed API URL | <https://heart-api-bxq0.onrender.com> (Render) â€” local: `kubectl port-forward svc/heart-api 8000:80` |
 
 ---
 
