@@ -7,7 +7,7 @@ import time
 import uuid
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Request
+from fastapi import Body, FastAPI, Request
 from fastapi.responses import JSONResponse, Response
 from prometheus_client import (
     CONTENT_TYPE_LATEST,
@@ -18,7 +18,13 @@ from prometheus_client import (
 from pythonjsonlogger import jsonlogger
 
 from src import __version__
-from src.api.schemas import HealthResponse, HeartFeatures, PredictionResponse
+from src.api.schemas import (
+    HIGH_RISK_EXAMPLE,
+    LOW_RISK_EXAMPLE,
+    HealthResponse,
+    HeartFeatures,
+    PredictionResponse,
+)
 from src.models.predict import load_model, predict_one
 
 # --- structured JSON logging -------------------------------------------------
@@ -51,15 +57,20 @@ app = FastAPI(
 )
 
 
+_INSTRUMENTATION_EXCLUDED_PATHS = {"/metrics"}
+
+
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
     rid = request.headers.get("x-request-id") or str(uuid.uuid4())
     start = time.perf_counter()
     response = await call_next(request)
     elapsed = time.perf_counter() - start
+    response.headers["x-request-id"] = rid
+    if request.url.path in _INSTRUMENTATION_EXCLUDED_PATHS:
+        return response
     REQUESTS.labels(request.url.path, request.method, str(response.status_code)).inc()
     LATENCY.labels(request.url.path).observe(elapsed)
-    response.headers["x-request-id"] = rid
     log.info(
         "request",
         extra={
@@ -98,7 +109,23 @@ def metrics():
 
 
 @app.post("/predict", response_model=PredictionResponse, tags=["inference"])
-def predict(features: HeartFeatures):
+def predict(
+    features: HeartFeatures = Body(
+        ...,
+        openapi_examples={
+            "high_risk": {
+                "summary": "High-risk patient (expects label='disease')",
+                "description": "70yo male, chest pain type 4, BP 180, chol 320, exang=1, oldpeak 4.0, ca=3, thal=7.",
+                "value": HIGH_RISK_EXAMPLE,
+            },
+            "low_risk": {
+                "summary": "Low-risk patient (expects label='no_disease')",
+                "description": "35yo female, chest pain type 1, BP 110, chol 180, no exang, oldpeak 0, ca=0, thal=3.",
+                "value": LOW_RISK_EXAMPLE,
+            },
+        },
+    ),
+):
     try:
         result = predict_one(features.model_dump())
     except FileNotFoundError as exc:
