@@ -29,7 +29,7 @@ monitoring.
 | a | Deployment manifests + Helm chart | `deploy/k8s/`, `deploy/helm/heart-api/` |
 | a | Screenshots | `screenshots/` |
 | a | Final 10-page report | `docs/REPORT.md`, `docs/REPORT.docx` |
-| b | Short demo video | `docs/demo_slideshow.mp4` |
+| b | Short demo video | `docs/demo_video.mp4` |
 | c | Deployed API URL / local instructions | see Â§5 |
 
 ---
@@ -149,7 +149,7 @@ src/{config.py, data/, features/, models/, api/}
 tests/test_{data,pipeline,predict,api}.py
 deploy/{k8s/, helm/heart-api/, render/render.yaml}
 monitoring/{prometheus.yml, grafana/}
-docs/{REPORT.md, REPORT.docx, architecture.md, NARRATION_SCRIPT.md, demo_slideshow.mp4}
+docs/{REPORT.md, REPORT.docx, architecture.md, demo_video.mp4}
 screenshots/*.png
 Dockerfile, docker-compose.yml, Makefile, requirements.txt, environment.yml
 ```

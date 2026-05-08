@@ -268,8 +268,7 @@ End-to-end verification (executed against the live URL):
 - `README.md` covers setup, Docker, Kubernetes, Render, CI/CD, and layout.
 - `docs/architecture.md` includes a Mermaid + ASCII architecture diagram.
 - `screenshots/` contains 15 PNGs referenced from this report and the
-  demo video (`docs/demo_slideshow.mp4`).
-- `docs/NARRATION_SCRIPT.md` is the timed narration for the video.
+  demo video (`docs/demo_video.mp4`).
 
 ---
 
@@ -286,7 +285,7 @@ End-to-end verification (executed against the live URL):
 | Deployment manifests + Helm chart | `deploy/k8s/`, `deploy/helm/heart-api/` |
 | Screenshot folder | `screenshots/` (19 PNGs) |
 | Final 10-page report (.docx) | `docs/REPORT.docx` |
-| Demo video | `docs/demo_slideshow.mp4` |
+| Demo video | `docs/demo_video.mp4` |
 | Deployed API URL | <https://heart-api-bxq0.onrender.com> (Render) â€” local: `kubectl port-forward svc/heart-api 8000:80` |
 
 ---
