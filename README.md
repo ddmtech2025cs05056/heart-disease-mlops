@@ -1,6 +1,9 @@
 # Heart Disease Prediction â€” End-to-End MLOps Project
 
-[![CI](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/ci.yml/badge.svg)](./.github/workflows/ci.yml)
+[![CI](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/ci.yml)
+[![Lint](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/lint.yml/badge.svg)](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/lint.yml)
+[![CodeQL](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/codeql.yml/badge.svg)](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/codeql.yml)
+[![Docker Build](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/docker-build.yml/badge.svg)](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/docker-build.yml)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 

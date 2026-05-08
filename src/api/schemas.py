@@ -42,15 +42,35 @@ class HeartFeatures(BaseModel):
 
 
 HIGH_RISK_EXAMPLE: dict = {
-    "age": 70, "sex": 1, "cp": 4, "trestbps": 180, "chol": 320,
-    "fbs": 1, "restecg": 2, "thalach": 100, "exang": 1, "oldpeak": 4.0,
-    "slope": 3, "ca": 3, "thal": 7,
+    "age": 70,
+    "sex": 1,
+    "cp": 4,
+    "trestbps": 180,
+    "chol": 320,
+    "fbs": 1,
+    "restecg": 2,
+    "thalach": 100,
+    "exang": 1,
+    "oldpeak": 4.0,
+    "slope": 3,
+    "ca": 3,
+    "thal": 7,
 }
 
 LOW_RISK_EXAMPLE: dict = {
-    "age": 35, "sex": 0, "cp": 1, "trestbps": 110, "chol": 180,
-    "fbs": 0, "restecg": 0, "thalach": 180, "exang": 0, "oldpeak": 0.0,
-    "slope": 1, "ca": 0, "thal": 3,
+    "age": 35,
+    "sex": 0,
+    "cp": 1,
+    "trestbps": 110,
+    "chol": 180,
+    "fbs": 0,
+    "restecg": 0,
+    "thalach": 180,
+    "exang": 0,
+    "oldpeak": 0.0,
+    "slope": 1,
+    "ca": 0,
+    "thal": 3,
 }
 
 

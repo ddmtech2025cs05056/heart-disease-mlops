@@ -110,7 +110,7 @@ def metrics():
 
 @app.post("/predict", response_model=PredictionResponse, tags=["inference"])
 def predict(
-    features: HeartFeatures = Body(
+    features: HeartFeatures = Body(  # noqa: B008
         ...,
         openapi_examples={
             "high_risk": {
