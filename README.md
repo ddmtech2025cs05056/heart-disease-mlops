@@ -1,9 +1,9 @@
 # Heart Disease Prediction â€” End-to-End MLOps Project
 
-[![CI](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/ci.yml)
-[![Lint](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/lint.yml/badge.svg)](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/lint.yml)
-[![CodeQL](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/codeql.yml/badge.svg)](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/codeql.yml)
-[![Docker Build](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/docker-build.yml/badge.svg)](https://github.com/dd-mtech123/heart-disease-mlops/actions/workflows/docker-build.yml)
+[![CI](https://github.com/ddmtech2025cs05056/heart-disease-mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/ddmtech2025cs05056/heart-disease-mlops/actions/workflows/ci.yml)
+[![Lint](https://github.com/ddmtech2025cs05056/heart-disease-mlops/actions/workflows/lint.yml/badge.svg)](https://github.com/ddmtech2025cs05056/heart-disease-mlops/actions/workflows/lint.yml)
+[![CodeQL](https://github.com/ddmtech2025cs05056/heart-disease-mlops/actions/workflows/codeql.yml/badge.svg)](https://github.com/ddmtech2025cs05056/heart-disease-mlops/actions/workflows/codeql.yml)
+[![Docker Build](https://github.com/ddmtech2025cs05056/heart-disease-mlops/actions/workflows/docker-build.yml/badge.svg)](https://github.com/ddmtech2025cs05056/heart-disease-mlops/actions/workflows/docker-build.yml)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -66,7 +66,7 @@ Higher-resolution diagram in `docs/architecture.md`.
 ## 3. Quickstart
 
 ```bash
-git clone https://github.com/dd-mtech123/heart-disease-mlops.git
+git clone https://github.com/ddmtech2025cs05056/heart-disease-mlops.git
 cd heart-disease-mlops
 
 python -m venv .venv
@@ -121,8 +121,8 @@ helm upgrade --install heart-api deploy/helm/heart-api
 kubectl port-forward svc/heart-api 8000:80
 ```
 
-**Deployed API URL:** <https://heart-api-bxq0.onrender.com>
-*(Swagger: <https://heart-api-bxq0.onrender.com/docs> · Health: <https://heart-api-bxq0.onrender.com/health>)*
+**Deployed API URL:** <https://heart-disease-mlops-yhb7.onrender.com>
+*(Swagger: <https://heart-disease-mlops-yhb7.onrender.com/docs> · Health: <https://heart-disease-mlops-yhb7.onrender.com/health>)*
 
 ---
 

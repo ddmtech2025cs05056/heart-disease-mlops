@@ -3,8 +3,8 @@
 **Project:** End-to-End Heart Disease Prediction
 **Author:** Deepak Dharmani (BITS ID: 2025CS05056)
 **Submission date:** 5-May-2026
-**Repository:** `https://github.com/dd-mtech123/heart-disease-mlops`
-**Deployed API URL:** <https://heart-api-bxq0.onrender.com>
+**Repository:** `https://github.com/ddmtech2025cs05056/heart-disease-mlops`
+**Deployed API URL:** <https://heart-disease-mlops-yhb7.onrender.com>
 
 ---
 
@@ -37,7 +37,7 @@ modern MLOps lifecycle requested by the assignment:
 The whole project is reproducible from a clean machine in ~5 minutes.
 
 ```bash
-git clone https://github.com/dd-mtech123/heart-disease-mlops.git
+git clone https://github.com/ddmtech2025cs05056/heart-disease-mlops.git
 cd heart-disease-mlops
 python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
@@ -217,9 +217,9 @@ Docker web service from the GitHub repo with `/health` health-checks.
 Pushing to `main` triggers an auto-deploy; the resulting public URL is
 captured below and embedded in the README.
 
-**Deployed API URL:** <https://heart-api-bxq0.onrender.com>
-**Swagger:** <https://heart-api-bxq0.onrender.com/docs>
-**Health:** <https://heart-api-bxq0.onrender.com/health>
+**Deployed API URL:** <https://heart-disease-mlops-yhb7.onrender.com>
+**Swagger:** <https://heart-disease-mlops-yhb7.onrender.com/docs>
+**Health:** <https://heart-disease-mlops-yhb7.onrender.com/health>
 
 End-to-end verification (executed against the live URL):
 
@@ -276,7 +276,7 @@ End-to-end verification (executed against the live URL):
 
 | PDF deliverable | Where |
 |---|---|
-| GitHub repo | `https://github.com/dd-mtech123/heart-disease-mlops` |
+| GitHub repo | `https://github.com/ddmtech2025cs05056/heart-disease-mlops` |
 | Code, Dockerfile, requirements | repo root |
 | Cleaned dataset + download script | `data/`, `src/data/{download,preprocess}.py` |
 | Notebooks (EDA, training, inference) | `notebooks/01_eda.ipynb`, `notebooks/02_modeling.ipynb` |
@@ -286,7 +286,7 @@ End-to-end verification (executed against the live URL):
 | Screenshot folder | `screenshots/` (19 PNGs) |
 | Final 10-page report (.docx) | `docs/REPORT.docx` |
 | Demo video | `docs/demo_video.mp4` |
-| Deployed API URL | <https://heart-api-bxq0.onrender.com> (Render) â€” local: `kubectl port-forward svc/heart-api 8000:80` |
+| Deployed API URL | <https://heart-disease-mlops-yhb7.onrender.com> (Render) â€” local: `kubectl port-forward svc/heart-api 8000:80` |
 
 ---
 

@@ -1,10 +1,10 @@
 services:
   - type: web
-    name: heart-api
+    name: heart-disease-mlops
     runtime: docker
     plan: free
     region: oregon
-    repo: https://github.com/dd-mtech123/heart-disease-mlops
+    repo: https://github.com/ddmtech2025cs05056/heart-disease-mlops
     branch: main
     dockerfilePath: ./Dockerfile
     healthCheckPath: /health
