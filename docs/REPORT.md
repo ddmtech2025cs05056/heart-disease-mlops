@@ -147,7 +147,27 @@ To browse: `mlflow ui --backend-store-uri ./mlruns` → <http://localhost:5000>.
 
 ---
 
-## 6. Packaging and reproducibility *(Task 4 — 7 marks)*
+## 6. System architecture
+
+The diagram below shows how the data, training, serving, observability,
+and CI/CD components fit together end-to-end. The same diagram is also
+maintained in Mermaid source form in `docs/architecture.md` so it can be
+regenerated whenever the system evolves.
+
+![System architecture](architecture.png)
+
+| Layer | Components in this project |
+|---|---|
+| Data | UCI Cleveland CSV → `src/data/download.py` → `src/data/preprocess.py` (impute, binarise target) |
+| Training | `src/features/pipeline.py` (`ColumnTransformer`) → `src/models/train.py` (`GridSearchCV` over LR / RF / XGBoost) → `models/heart_pipeline.joblib` |
+| Experiment tracking | **MLflow** logs params, six metrics and ROC/PR/CM plots for every run |
+| Serving | **FastAPI** (`src/api/main.py`) → multi-stage **Docker** image → **Kubernetes** (raw manifests + Helm chart) → **Render** (public URL) |
+| Observability | `prometheus_client` on `/metrics` → **Prometheus** scrape job → **Grafana** dashboard; structured JSON request logs |
+| CI/CD | **GitHub Actions** (`.github/workflows/ci.yml`) runs lint → tests → train → Docker build on every push |
+
+---
+
+## 7. Packaging and reproducibility *(Task 4 — 7 marks)*
 
 - **Artefact format:** `joblib`-pickled sklearn `Pipeline` (preprocessor +
   estimator in one object), plus a JSON sidecar (`best_model.json`).
@@ -161,7 +181,7 @@ To browse: `mlflow ui --backend-store-uri ./mlruns` → <http://localhost:5000>.
 
 ---
 
-## 7. Tests and CI *(Task 5 — 8 marks)*
+## 8. Tests and CI *(Task 5 — 8 marks)*
 
 `tests/` contains four files (9 tests in total, all green):
 
@@ -189,7 +209,7 @@ and all logs are visible in the Actions run page.
 
 ---
 
-## 8. Containerisation *(Task 6 — 5 marks)*
+## 9. Containerisation *(Task 6 — 5 marks)*
 
 A two-stage Dockerfile (`python:3.11-slim` builder + runtime) installs
 deps into `/install`, copies only `src/` and `models/`, switches to a
@@ -210,7 +230,7 @@ curl -X POST http://localhost:8000/predict \
 `docker-compose.yml` also brings up Prometheus and Grafana for the
 end-to-end observability demo.
 
-## 9. Production deployment *(Task 7 — 7 marks)*
+## 10. Production deployment *(Task 7 — 7 marks)*
 
 Two complementary deployment paths are provided.
 
@@ -260,7 +280,7 @@ End-to-end verification (executed against the live URL):
 
 ---
 
-## 10. Monitoring and logging *(Task 8 — 3 marks)*
+## 11. Monitoring and logging *(Task 8 — 3 marks)*
 
 - **Metrics:** the API uses `prometheus_client` to expose three families
   on `/metrics` — `heart_api_requests_total{endpoint,method,status}`,
@@ -284,7 +304,7 @@ End-to-end verification (executed against the live URL):
 
 ---
 
-## 11. Documentation and reporting *(Task 9 — 2 marks)*
+## 12. Documentation and reporting *(Task 9 — 2 marks)*
 
 - This document — `docs/REPORT.md` (also exported as `REPORT.docx` and `REPORT.pdf`).
 - `README.md` covers setup, Docker, Kubernetes, Render, CI/CD, and layout.
@@ -294,7 +314,7 @@ End-to-end verification (executed against the live URL):
 
 ---
 
-## 12. Deliverables checklist
+## 13. Deliverables checklist
 
 Everything the assignment asks for is included in this submission. The
 table below maps each required deliverable to where it lives in the repo.
