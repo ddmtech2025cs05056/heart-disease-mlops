@@ -8,6 +8,17 @@
 
 ---
 
+## 🚀 Live deliverables
+
+| Artefact | Link |
+|---|---|
+| 🎥 **Demo video** | [`docs/demo_video.mp4`](demo_video.mp4) |
+| 🌐 **Live API (Render)** | <https://heart-disease-mlops-yhb7.onrender.com> |
+| 📘 **Try `/predict` (Swagger)** | <https://heart-disease-mlops-yhb7.onrender.com/docs#/inference/predict_predict_post> |
+| ❤️ **Health check** | <https://heart-disease-mlops-yhb7.onrender.com/health> |
+
+---
+
 ## 1. Executive summary
 
 This project delivers a production-grade MLOps pipeline that predicts the

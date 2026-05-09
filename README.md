@@ -7,6 +7,17 @@
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+## 🚀 Live deliverables
+
+| Artefact | Link |
+|---|---|
+| 🎥 **Demo video** | [`docs/demo_video.mp4`](docs/demo_video.mp4) |
+| 🌐 **Live API (Render)** | <https://heart-disease-mlops-yhb7.onrender.com> |
+| 📘 **Try `/predict` (Swagger)** | <https://heart-disease-mlops-yhb7.onrender.com/docs#/inference/predict_predict_post> |
+| ❤️ **Health check** | <https://heart-disease-mlops-yhb7.onrender.com/health> |
+
+---
+
 A reproducible, production-grade MLOps pipeline that predicts heart-disease
 risk from patient health records using the **UCI Heart Disease (Cleveland)**
 dataset. It covers EDA â†’ training â†’ MLflow tracking â†’ packaging â†’ CI/CD â†’
