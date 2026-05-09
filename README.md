@@ -11,7 +11,8 @@
 
 | Artefact | Link |
 |---|---|
-| 🎥 **Demo video** | [`docs/2026-05-09 17-51-37.mp4`](docs/2026-05-09%2017-51-37.mp4) |
+| 🎥 **Demo video (in repo)** | [`docs/2026-05-09 17-51-37.mp4`](docs/2026-05-09%2017-51-37.mp4) |
+| 🎥 **Demo video (Google Drive — streaming)** | <https://drive.google.com/file/d/106ABOgXefeEAvOQdUCnteJ9P6vjYF_M1/view?usp=drive_link> |
 | 🌐 **Live API (Render)** | <https://heart-disease-mlops-yhb7.onrender.com> |
 | 📘 **Try `/predict` (Swagger)** | <https://heart-disease-mlops-yhb7.onrender.com/docs#/inference/predict_predict_post> |
 | ❤️ **Health check** | <https://heart-disease-mlops-yhb7.onrender.com/health> |
