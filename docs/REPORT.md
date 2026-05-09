@@ -2,9 +2,10 @@
 **Course:** MLOps (S2-25_AMLCSZG523)
 **Project:** End-to-End Heart Disease Prediction
 **Author:** Deepak Dharmani (BITS ID: 2025CS05056)
-**Submission date:** 5-May-2026
+**Submission date:** 09-May-2026
 **Repository:** `https://github.com/ddmtech2025cs05056/heart-disease-mlops`
 **Deployed API URL:** <https://heart-disease-mlops-yhb7.onrender.com>
+**Try `/predict` (Swagger UI):** <https://heart-disease-mlops-yhb7.onrender.com/docs#/inference/predict_predict_post>
 
 ---
 
