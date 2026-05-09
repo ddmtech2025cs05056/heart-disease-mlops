@@ -15,7 +15,7 @@
 |---|---|
 | 🎥 **Demo video (in repo)** | [`docs/2026-05-09 17-51-37.mp4`](2026-05-09%2017-51-37.mp4) |
 | 🎥 **Demo video (Google Drive — streaming)** | <https://drive.google.com/file/d/106ABOgXefeEAvOQdUCnteJ9P6vjYF_M1/view?usp=drive_link> |
-| 📄 **Final report (PDF)** | [`docs/REPORT.pdf`](REPORT.pdf) |
+| 📄 **Final report (PDF)** | [`docs/MLOps_Assignment_Report_2025cs05056.pdf`](MLOps_Assignment_Report_2025cs05056.pdf) |
 | 📝 **Final report (Word)** | [`docs/REPORT.docx`](REPORT.docx) |
 | 🌐 **Live API (Render)** | <https://heart-disease-mlops-yhb7.onrender.com> |
 | 📘 **Try `/predict` (Swagger)** | <https://heart-disease-mlops-yhb7.onrender.com/docs#/inference/predict_predict_post> |
@@ -303,7 +303,7 @@ End-to-end verification (executed against the live URL):
 
 ## 12. Documentation and reporting *(Task 9 — 2 marks)*
 
-- This document — `docs/REPORT.md` (also exported as `REPORT.docx` and `REPORT.pdf`).
+- This document — `docs/REPORT.md` (also exported as `REPORT.docx` and `MLOps_Assignment_Report_2025cs05056.pdf`).
 - `README.md` covers setup, Docker, Kubernetes, Render, CI/CD, and layout.
 - `docs/architecture.md` includes a Mermaid + ASCII architecture diagram.
 - `screenshots/` contains 15 PNGs referenced from this report and the
@@ -325,7 +325,7 @@ table below maps each required deliverable to where it lives in the repo.
 | 5 | GitHub Actions pipeline running lint, tests and the Docker build | `.github/workflows/ci.yml` |
 | 6 | Kubernetes deployment manifests and Helm chart | `deploy/k8s/`, `deploy/helm/heart-api/` |
 | 7 | Screenshots of every major step | `screenshots/` |
-| 8 | Final report in three formats | `docs/REPORT.pdf`, `docs/REPORT.docx`, `docs/REPORT.md` |
+| 8 | Final report in three formats | `docs/MLOps_Assignment_Report_2025cs05056.pdf`, `docs/REPORT.docx`, `docs/REPORT.md` |
 | 9 | Short demo video walking through the whole pipeline | `docs/2026-05-09 17-51-37.mp4` (also on Google Drive: https://drive.google.com/file/d/106ABOgXefeEAvOQdUCnteJ9P6vjYF_M1/view) |
 | 10 | Deployed API URL (publicly reachable) | https://heart-disease-mlops-yhb7.onrender.com |
 | 11 | Local run instructions | `kubectl port-forward svc/heart-api 8000:80` after applying the Kubernetes manifests |

@@ -1,4 +1,4 @@
-"""Convert docs/REPORT.docx to docs/REPORT.pdf using Microsoft Word (COM).
+"""Convert docs/REPORT.docx to docs/MLOps_Assignment_Report_2025cs05056.pdf using Microsoft Word (COM).
 
 Requires Microsoft Word installed locally and ``pywin32``. Produces a PDF
 whose layout matches the source DOCX exactly because the conversion is
@@ -13,7 +13,7 @@ import win32com.client  # type: ignore[import-not-found]
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "docs" / "REPORT.docx"
-DST = ROOT / "docs" / "REPORT.pdf"
+DST = ROOT / "docs" / "MLOps_Assignment_Report_2025cs05056.pdf"
 
 WD_FORMAT_PDF = 17
 

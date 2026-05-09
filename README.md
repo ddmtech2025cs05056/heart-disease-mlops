@@ -13,7 +13,7 @@
 |---|---|
 | 🎥 **Demo video (in repo)** | [`docs/2026-05-09 17-51-37.mp4`](docs/2026-05-09%2017-51-37.mp4) |
 | 🎥 **Demo video (Google Drive — streaming)** | <https://drive.google.com/file/d/106ABOgXefeEAvOQdUCnteJ9P6vjYF_M1/view?usp=drive_link> |
-| 📄 **Final report (PDF)** | [`docs/REPORT.pdf`](docs/REPORT.pdf) |
+| 📄 **Final report (PDF)** | [`docs/MLOps_Assignment_Report_2025cs05056.pdf`](docs/MLOps_Assignment_Report_2025cs05056.pdf) |
 | 📝 **Final report (Word)** | [`docs/REPORT.docx`](docs/REPORT.docx) |
 | 🌐 **Live API (Render)** | <https://heart-disease-mlops-yhb7.onrender.com> |
 | 📘 **Try `/predict` (Swagger)** | <https://heart-disease-mlops-yhb7.onrender.com/docs#/inference/predict_predict_post> |
@@ -42,7 +42,7 @@ Everything the assignment asks for is included in this repository:
 - The GitHub Actions CI workflow at `.github/workflows/ci.yml`.
 - Kubernetes deployment manifests and a Helm chart under `deploy/k8s/` and `deploy/helm/heart-api/`.
 - Screenshots of every major step in the `screenshots/` folder.
-- The final report in three formats: `docs/REPORT.pdf`, `docs/REPORT.docx`, `docs/REPORT.md`.
+- The final report in three formats: `docs/MLOps_Assignment_Report_2025cs05056.pdf`, `docs/REPORT.docx`, `docs/REPORT.md`.
 - A short demo video walking through the whole pipeline at `docs/2026-05-09 17-51-37.mp4` (the same video is also linked at the top of this file as a Google Drive stream).
 - The deployed public API URL — https://heart-disease-mlops-yhb7.onrender.com — plus instructions for running it locally (see §5).
 
@@ -163,7 +163,7 @@ src/{config.py, data/, features/, models/, api/}
 tests/test_{data,pipeline,predict,api}.py
 deploy/{k8s/, helm/heart-api/, render/render.yaml}
 monitoring/{prometheus.yml, grafana/}
-docs/{REPORT.md, REPORT.docx, REPORT.pdf, architecture.md, 2026-05-09 17-51-37.mp4}
+docs/{REPORT.md, REPORT.docx, MLOps_Assignment_Report_2025cs05056.pdf, architecture.md, 2026-05-09 17-51-37.mp4}
 screenshots/*.png
 Dockerfile, docker-compose.yml, Makefile, requirements.txt, environment.yml
 ```
