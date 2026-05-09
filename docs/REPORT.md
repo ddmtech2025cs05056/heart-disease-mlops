@@ -26,23 +26,31 @@
 
 This project delivers a production-grade MLOps pipeline that predicts the
 risk of heart disease from patient health records (UCI Heart Disease,
-Cleveland — 303 rows × 14 columns). It exercises every stage of the
-modern MLOps lifecycle requested by the assignment:
+Cleveland — 303 rows × 14 columns). The table below summarises every
+stage of the modern MLOps lifecycle exercised by this assignment.
 
-1. Reproducible data acquisition + EDA
-2. Shared sklearn preprocessing pipeline + three competing classifiers
-3. Hyper-parameter search with stratified 5-fold cross-validation
-4. **MLflow** experiment tracking (params / metrics / plots / artefacts)
-5. Reusable model artefact (`models/heart_pipeline.joblib`)
-6. **pytest** unit + integration tests with **GitHub Actions** CI
-7. **FastAPI** prediction service exposed via **Docker**
-8. **Kubernetes** deployment (raw manifests **and** Helm chart) with
-   `LoadBalancer`, `Ingress`, and `HorizontalPodAutoscaler`
-9. **Render.com** Docker blueprint for a one-click public URL
-10. **Prometheus + Grafana** observability and structured JSON logs
+| # | MLOps lifecycle stage | What this project does |
+|---|---|---|
+| 1 | Data acquisition and EDA | Reproducible download from UCI; cleaning, imputation, target binarisation; notebook with class balance, correlations, distributions |
+| 2 | Feature engineering | Shared sklearn `ColumnTransformer` (median impute + scaler for numerics; mode impute + one-hot for categoricals) used at both train and serve time |
+| 3 | Modelling | Three competing classifiers (Logistic Regression, Random Forest, XGBoost) trained side by side |
+| 4 | Hyper-parameter search | `GridSearchCV` with stratified 5-fold cross-validation, scored on ROC-AUC |
+| 5 | Experiment tracking | **MLflow** logs params, six metrics, ROC/PR/confusion-matrix plots and the fitted pipeline for every run |
+| 6 | Reusable model artefact | Persisted as `models/heart_pipeline.joblib` plus a JSON sidecar with headline metrics |
+| 7 | Tests and CI | **pytest** unit + integration tests (9 tests) executed by **GitHub Actions** on every push |
+| 8 | Containerisation | Two-stage **Docker** image (`python:3.11-slim`), non-root user, `HEALTHCHECK` on `/health` |
+| 9 | API serving | **FastAPI** with Pydantic schemas, Swagger UI, request-ID logging |
+| 10 | Kubernetes deployment | Raw manifests **and** a Helm chart with `LoadBalancer`, `Ingress` and `HorizontalPodAutoscaler` |
+| 11 | Public deployment | **Render.com** Docker blueprint for a one-click public URL with auto-deploy on push |
+| 12 | Monitoring and logging | **Prometheus + Grafana** dashboards, structured JSON logs ready for ELK / Loki / CloudWatch |
 
-**Best model on a stratified 20% test set:** Logistic Regression with
-**ROC-AUC = 0.967**, **Accuracy = 0.885**, **F1 = 0.881**.
+**Headline result (held-out 20% stratified test set):**
+
+| Metric | Value | Best model |
+|---|---:|---|
+| ROC-AUC | **0.967** | Logistic Regression |
+| Accuracy | **0.885** | Logistic Regression |
+| F1 | **0.881** | Logistic Regression |
 
 ---
 
@@ -288,18 +296,22 @@ End-to-end verification (executed against the live URL):
 
 ## 12. Deliverables checklist
 
-Everything the assignment asks for is included in this submission:
+Everything the assignment asks for is included in this submission. The
+table below maps each required deliverable to where it lives in the repo.
 
-- The complete project source code, the Dockerfile and the pinned `requirements.txt` are in the GitHub repository: https://github.com/ddmtech2025cs05056/heart-disease-mlops
-- The cleaned dataset and the script that downloads and preprocesses it are under `data/` and `src/data/`.
-- Two Jupyter notebooks are provided in `notebooks/` — one for exploratory data analysis and one for modelling.
-- All unit and integration tests are in the `tests/` folder (four files, nine tests, all passing).
-- The GitHub Actions pipeline that runs lint, tests and the Docker build lives at `.github/workflows/ci.yml`.
-- The Kubernetes deployment manifests and the Helm chart are in `deploy/k8s/` and `deploy/helm/heart-api/`.
-- Screenshots covering every major step are collected in the `screenshots/` folder.
-- This final report is delivered in three formats: `docs/REPORT.pdf`, `docs/REPORT.docx` and `docs/REPORT.md`.
-- A short demo video that walks through the whole pipeline end-to-end is at `docs/2026-05-09 17-51-37.mp4`. The same video is also available on Google Drive at https://drive.google.com/file/d/106ABOgXefeEAvOQdUCnteJ9P6vjYF_M1/view.
-- The API is deployed and running publicly at https://heart-disease-mlops-yhb7.onrender.com (live URL). For a local run the same service can be reached with `kubectl port-forward svc/heart-api 8000:80` after applying the Kubernetes manifests.
+| # | Deliverable | Where to find it |
+|---|---|---|
+| 1 | Project source code, Dockerfile and pinned dependencies | Root of the GitHub repository: https://github.com/ddmtech2025cs05056/heart-disease-mlops |
+| 2 | Cleaned dataset and the script that downloads and preprocesses it | `data/` and `src/data/` |
+| 3 | Jupyter notebooks for exploratory data analysis and modelling | `notebooks/01_eda.ipynb`, `notebooks/02_modeling.ipynb` |
+| 4 | Unit and integration tests (four files, nine tests, all passing) | `tests/` |
+| 5 | GitHub Actions pipeline running lint, tests and the Docker build | `.github/workflows/ci.yml` |
+| 6 | Kubernetes deployment manifests and Helm chart | `deploy/k8s/`, `deploy/helm/heart-api/` |
+| 7 | Screenshots of every major step | `screenshots/` |
+| 8 | Final report in three formats | `docs/REPORT.pdf`, `docs/REPORT.docx`, `docs/REPORT.md` |
+| 9 | Short demo video walking through the whole pipeline | `docs/2026-05-09 17-51-37.mp4` (also on Google Drive: https://drive.google.com/file/d/106ABOgXefeEAvOQdUCnteJ9P6vjYF_M1/view) |
+| 10 | Deployed API URL (publicly reachable) | https://heart-disease-mlops-yhb7.onrender.com |
+| 11 | Local run instructions | `kubectl port-forward svc/heart-api 8000:80` after applying the Kubernetes manifests |
 
 ---
 
