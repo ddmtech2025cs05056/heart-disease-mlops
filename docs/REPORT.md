@@ -272,10 +272,6 @@ End-to-end verification (executed against the live URL):
 | `POST /predict` (low-risk sample) | `prediction=0, label="no_disease", probability_disease=0.0045` |
 | `GET /metrics` | Emits Prometheus exposition; `/metrics` excluded from self-instrumentation |
 
-![Render service dashboard (Live)](../screenshots/14_render_dashboard.png)
-![Render build logs](../screenshots/15_render_logs.png)
-![Public Swagger UI](../screenshots/16_render_swagger.png)
-![Public /predict response](../screenshots/17_render_predict.png)
 ![Local Swagger UI](../screenshots/11_swagger_ui.png)
 
 ---
