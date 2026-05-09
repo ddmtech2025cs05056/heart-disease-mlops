@@ -13,6 +13,8 @@
 |---|---|
 | 🎥 **Demo video (in repo)** | [`docs/2026-05-09 17-51-37.mp4`](docs/2026-05-09%2017-51-37.mp4) |
 | 🎥 **Demo video (Google Drive — streaming)** | <https://drive.google.com/file/d/106ABOgXefeEAvOQdUCnteJ9P6vjYF_M1/view?usp=drive_link> |
+| 📄 **Final report (PDF)** | [`docs/REPORT.pdf`](docs/REPORT.pdf) |
+| 📝 **Final report (Word)** | [`docs/REPORT.docx`](docs/REPORT.docx) |
 | 🌐 **Live API (Render)** | <https://heart-disease-mlops-yhb7.onrender.com> |
 | 📘 **Try `/predict` (Swagger)** | <https://heart-disease-mlops-yhb7.onrender.com/docs#/inference/predict_predict_post> |
 | ❤️ **Health check** | <https://heart-disease-mlops-yhb7.onrender.com/health> |
@@ -40,7 +42,7 @@ monitoring.
 | a | GitHub Actions workflow | `.github/workflows/ci.yml` |
 | a | Deployment manifests + Helm chart | `deploy/k8s/`, `deploy/helm/heart-api/` |
 | a | Screenshots | `screenshots/` |
-| a | Final 10-page report | `docs/REPORT.md`, `docs/REPORT.docx` |
+| a | Final 10-page report | `docs/REPORT.pdf`, `docs/REPORT.docx`, `docs/REPORT.md` |
 | b | Short demo video | `docs/2026-05-09 17-51-37.mp4` |
 | c | Deployed API URL / local instructions | see Â§5 |
 
@@ -161,7 +163,7 @@ src/{config.py, data/, features/, models/, api/}
 tests/test_{data,pipeline,predict,api}.py
 deploy/{k8s/, helm/heart-api/, render/render.yaml}
 monitoring/{prometheus.yml, grafana/}
-docs/{REPORT.md, REPORT.docx, architecture.md, 2026-05-09 17-51-37.mp4}
+docs/{REPORT.md, REPORT.docx, REPORT.pdf, architecture.md, 2026-05-09 17-51-37.mp4}
 screenshots/*.png
 Dockerfile, docker-compose.yml, Makefile, requirements.txt, environment.yml
 ```

@@ -14,6 +14,8 @@
 |---|---|
 | 🎥 **Demo video (in repo)** | [`docs/2026-05-09 17-51-37.mp4`](2026-05-09%2017-51-37.mp4) |
 | 🎥 **Demo video (Google Drive — streaming)** | <https://drive.google.com/file/d/106ABOgXefeEAvOQdUCnteJ9P6vjYF_M1/view?usp=drive_link> |
+| 📄 **Final report (PDF)** | [`docs/REPORT.pdf`](REPORT.pdf) |
+| 📝 **Final report (Word)** | [`docs/REPORT.docx`](REPORT.docx) |
 | 🌐 **Live API (Render)** | <https://heart-disease-mlops-yhb7.onrender.com> |
 | 📘 **Try `/predict` (Swagger)** | <https://heart-disease-mlops-yhb7.onrender.com/docs#/inference/predict_predict_post> |
 | ❤️ **Health check** | <https://heart-disease-mlops-yhb7.onrender.com/health> |
@@ -276,7 +278,7 @@ End-to-end verification (executed against the live URL):
 
 ## 11. Documentation and reporting *(Task 9 â€” 2 marks)*
 
-- This document â€” `docs/REPORT.md` (also exported as `REPORT.docx`).
+- This document â€” `docs/REPORT.md` (also exported as `REPORT.docx` and `REPORT.pdf`).
 - `README.md` covers setup, Docker, Kubernetes, Render, CI/CD, and layout.
 - `docs/architecture.md` includes a Mermaid + ASCII architecture diagram.
 - `screenshots/` contains 15 PNGs referenced from this report and the
@@ -296,7 +298,7 @@ End-to-end verification (executed against the live URL):
 | GitHub Actions YAML | `.github/workflows/ci.yml` |
 | Deployment manifests + Helm chart | `deploy/k8s/`, `deploy/helm/heart-api/` |
 | Screenshot folder | `screenshots/` (19 PNGs) |
-| Final 10-page report (.docx) | `docs/REPORT.docx` |
+| Final 10-page report (.pdf, .docx, .md) | `docs/REPORT.pdf`, `docs/REPORT.docx`, `docs/REPORT.md` |
 | Demo video | `docs/2026-05-09 17-51-37.mp4` |
 | Deployed API URL | <https://heart-disease-mlops-yhb7.onrender.com> (Render) â€” local: `kubectl port-forward svc/heart-api 8000:80` |
 
