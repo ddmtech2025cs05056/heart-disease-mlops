@@ -11,7 +11,7 @@
 
 | Artefact | Link |
 |---|---|
-| 🎥 **Demo video** | [`docs/demo_video.mp4`](docs/demo_video.mp4) |
+| 🎥 **Demo video** | [`docs/2026-05-09 17-51-37.mp4`](docs/2026-05-09%2017-51-37.mp4) |
 | 🌐 **Live API (Render)** | <https://heart-disease-mlops-yhb7.onrender.com> |
 | 📘 **Try `/predict` (Swagger)** | <https://heart-disease-mlops-yhb7.onrender.com/docs#/inference/predict_predict_post> |
 | ❤️ **Health check** | <https://heart-disease-mlops-yhb7.onrender.com/health> |
@@ -40,7 +40,7 @@ monitoring.
 | a | Deployment manifests + Helm chart | `deploy/k8s/`, `deploy/helm/heart-api/` |
 | a | Screenshots | `screenshots/` |
 | a | Final 10-page report | `docs/REPORT.md`, `docs/REPORT.docx` |
-| b | Short demo video | `docs/demo_video.mp4` |
+| b | Short demo video | `docs/2026-05-09 17-51-37.mp4` |
 | c | Deployed API URL / local instructions | see Â§5 |
 
 ---
@@ -160,7 +160,7 @@ src/{config.py, data/, features/, models/, api/}
 tests/test_{data,pipeline,predict,api}.py
 deploy/{k8s/, helm/heart-api/, render/render.yaml}
 monitoring/{prometheus.yml, grafana/}
-docs/{REPORT.md, REPORT.docx, architecture.md, demo_video.mp4}
+docs/{REPORT.md, REPORT.docx, architecture.md, 2026-05-09 17-51-37.mp4}
 screenshots/*.png
 Dockerfile, docker-compose.yml, Makefile, requirements.txt, environment.yml
 ```

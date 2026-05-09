@@ -43,5 +43,6 @@ Thumbs.db
 # Local-only observability stack (Prometheus + Grafana portable binaries, TSDB, Grafana SQLite)
 .obs/
 
-# OBS Studio test recordings (timestamped MP4s in docs/) — keep only the final demo_video.mp4
+# OBS Studio test recordings (timestamped MP4s in docs/) — keep only the final submitted demo
 docs/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] *.mp4
+!docs/2026-05-09 17-51-37.mp4

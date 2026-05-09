@@ -12,7 +12,7 @@
 
 | Artefact | Link |
 |---|---|
-| 🎥 **Demo video** | [`docs/demo_video.mp4`](demo_video.mp4) |
+| 🎥 **Demo video** | [`docs/2026-05-09 17-51-37.mp4`](2026-05-09%2017-51-37.mp4) |
 | 🌐 **Live API (Render)** | <https://heart-disease-mlops-yhb7.onrender.com> |
 | 📘 **Try `/predict` (Swagger)** | <https://heart-disease-mlops-yhb7.onrender.com/docs#/inference/predict_predict_post> |
 | ❤️ **Health check** | <https://heart-disease-mlops-yhb7.onrender.com/health> |
@@ -279,7 +279,7 @@ End-to-end verification (executed against the live URL):
 - `README.md` covers setup, Docker, Kubernetes, Render, CI/CD, and layout.
 - `docs/architecture.md` includes a Mermaid + ASCII architecture diagram.
 - `screenshots/` contains 15 PNGs referenced from this report and the
-  demo video (`docs/demo_video.mp4`).
+  demo video (`docs/2026-05-09 17-51-37.mp4`).
 
 ---
 
@@ -296,7 +296,7 @@ End-to-end verification (executed against the live URL):
 | Deployment manifests + Helm chart | `deploy/k8s/`, `deploy/helm/heart-api/` |
 | Screenshot folder | `screenshots/` (19 PNGs) |
 | Final 10-page report (.docx) | `docs/REPORT.docx` |
-| Demo video | `docs/demo_video.mp4` |
+| Demo video | `docs/2026-05-09 17-51-37.mp4` |
 | Deployed API URL | <https://heart-disease-mlops-yhb7.onrender.com> (Render) â€” local: `kubectl port-forward svc/heart-api 8000:80` |
 
 ---
