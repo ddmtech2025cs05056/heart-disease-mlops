@@ -1,4 +1,4 @@
-# MLOps Assignment 1 â€” Final Report
+# MLOps Assignment 1 — Final Report
 **Course:** MLOps (S2-25_AMLCSZG523)
 **Project:** End-to-End Heart Disease Prediction
 **Author:** Deepak Dharmani (BITS ID: 2025CS05056)
@@ -26,7 +26,7 @@
 
 This project delivers a production-grade MLOps pipeline that predicts the
 risk of heart disease from patient health records (UCI Heart Disease,
-Cleveland â€” 303 rows Ã— 14 columns). It exercises every stage of the
+Cleveland — 303 rows × 14 columns). It exercises every stage of the
 modern MLOps lifecycle requested by the assignment:
 
 1. Reproducible data acquisition + EDA
@@ -65,23 +65,23 @@ workflows respectively.
 
 ---
 
-## 3. Dataset and EDA *(Task 1 â€” 5 marks)*
+## 3. Dataset and EDA *(Task 1 — 5 marks)*
 
 The Cleveland CSV is fetched from the UCI repository by
 `src/data/download.py`. `src/data/preprocess.py` then:
 
 1. Replaces the literal `?` placeholders with NaN.
 2. Casts every column to numeric.
-3. Imputes missing values with column medians (`ca`, `thal` â€” six rows).
+3. Imputes missing values with column medians (`ca`, `thal` — six rows).
 4. Binarises the multi-class `num` field into a binary `target` (0 vs 1+).
 
 EDA highlights (notebook: `notebooks/01_eda.ipynb`):
 
 | Property | Value |
 |---|---|
-| Rows Ã— cols | 303 Ã— 14 |
+| Rows × cols | 303 × 14 |
 | Class balance | 54% no-disease / 46% disease |
-| Missing values | 6 (after `?`â†’NaN) |
+| Missing values | 6 (after `?`→NaN) |
 | Top |Pearson| with target | `cp` (0.41), `oldpeak` (0.50), `ca` (0.46), `thalach` (-0.42) |
 
 ![Class balance](../screenshots/01_eda_target_distribution.png)
@@ -89,14 +89,14 @@ EDA highlights (notebook: `notebooks/01_eda.ipynb`):
 
 ---
 
-## 4. Feature engineering and modelling *(Task 2 â€” 8 marks)*
+## 4. Feature engineering and modelling *(Task 2 — 8 marks)*
 
 `src/features/pipeline.py` builds a shared `ColumnTransformer`:
 
 - **Numeric** (`age`, `trestbps`, `chol`, `thalach`, `oldpeak`):
-  median impute â†’ `StandardScaler`.
+  median impute → `StandardScaler`.
 - **Categorical** (`sex`, `cp`, `fbs`, `restecg`, `exang`, `slope`, `ca`,
-  `thal`): most-frequent impute â†’ `OneHotEncoder(handle_unknown="ignore")`.
+  `thal`): most-frequent impute → `OneHotEncoder(handle_unknown="ignore")`.
 
 `src/models/train.py` drops this preprocessor in front of three classifiers
 and runs `GridSearchCV` (5-fold stratified, `scoring="roc_auc"`):
@@ -107,7 +107,7 @@ and runs `GridSearchCV` (5-fold stratified, `scoring="roc_auc"`):
 | RandomForest | `n_estimators in {100, 300}`, `max_depth in {None, 5, 10}` | 0.897 |
 | XGBoost | `n_estimators in {100, 300}`, `max_depth in {3, 5}`, `lr in {0.05, 0.1}` | 0.869 |
 
-**Held-out test metrics (20%, stratified) â€” actual values from this training run:**
+**Held-out test metrics (20%, stratified) — actual values from this training run:**
 
 | Model | Acc | Prec | Rec | F1 | ROC-AUC |
 |---|---:|---:|---:|---:|---:|
@@ -122,7 +122,7 @@ and write the headline metrics to `models/best_model.json`.
 
 ---
 
-## 5. Experiment tracking *(Task 3 â€” 5 marks)*
+## 5. Experiment tracking *(Task 3 — 5 marks)*
 
 MLflow is wired into `train.py` via `mlflow.set_tracking_uri()` and
 `mlflow.start_run()`. Each run logs:
@@ -132,14 +132,14 @@ MLflow is wired into `train.py` via `mlflow.set_tracking_uri()` and
 - Three plots (`roc_*.png`, `pr_*.png`, `cm_*.png`) under `plots/`
 - The fitted sklearn pipeline under `model/`
 
-To browse: `mlflow ui --backend-store-uri ./mlruns` â†’ <http://localhost:5000>.
+To browse: `mlflow ui --backend-store-uri ./mlruns` → <http://localhost:5000>.
 
 ![MLflow leaderboard](../screenshots/03_mlflow_experiments.png)
 ![MLflow run detail](../screenshots/04_mlflow_run_details.png)
 
 ---
 
-## 6. Packaging and reproducibility *(Task 4 â€” 7 marks)*
+## 6. Packaging and reproducibility *(Task 4 — 7 marks)*
 
 - **Artefact format:** `joblib`-pickled sklearn `Pipeline` (preprocessor +
   estimator in one object), plus a JSON sidecar (`best_model.json`).
@@ -147,13 +147,13 @@ To browse: `mlflow ui --backend-store-uri ./mlruns` â†’ <http://localhost:5
   pandas, scikit-learn 1.5, xgboost 2.0, mlflow 2.14, fastapi 0.111.
 - **Conda alternative:** `environment.yml` (`name: heart-mlops`,
   `python=3.11`, pip-installs `requirements.txt`).
-- **Pipeline reuse:** the API does **not** re-implement preprocessing â€” it
+- **Pipeline reuse:** the API does **not** re-implement preprocessing — it
   loads the joblib pipeline so train-time and serve-time transforms are
   byte-identical.
 
 ---
 
-## 7. Tests and CI *(Task 5 â€” 8 marks)*
+## 7. Tests and CI *(Task 5 — 8 marks)*
 
 `tests/` contains four files (9 tests in total, all green):
 
@@ -166,11 +166,11 @@ To browse: `mlflow ui --backend-store-uri ./mlruns` â†’ <http://localhost:5
 
 CI: `.github/workflows/ci.yml` (two jobs).
 
-1. **quality** â€” `pip install -r requirements.txt` â†’ `ruff check` â†’
-   `black --check` â†’ `pytest --cov=src` â†’ `python -m src.data.download`
-   â†’ `python -m src.models.train` â†’ upload `coverage.xml` and the trained
+1. **quality** — `pip install -r requirements.txt` → `ruff check` →
+   `black --check` → `pytest --cov=src` → `python -m src.data.download`
+   → `python -m src.models.train` → upload `coverage.xml` and the trained
    model artefact.
-2. **docker** â€” pulls the model artefact, `docker build`s the image,
+2. **docker** — pulls the model artefact, `docker build`s the image,
    runs it, and probes `/health` until it returns 200.
 
 The pipeline fails fast on lint, test, train, or container-startup errors,
@@ -181,7 +181,7 @@ and all logs are visible in the Actions run page.
 
 ---
 
-## 8. Containerisation *(Task 6 â€” 5 marks)*
+## 8. Containerisation *(Task 6 — 5 marks)*
 
 A two-stage Dockerfile (`python:3.11-slim` builder + runtime) installs
 deps into `/install`, copies only `src/` and `models/`, switches to a
@@ -202,7 +202,7 @@ curl -X POST http://localhost:8000/predict \
 `docker-compose.yml` also brings up Prometheus and Grafana for the
 end-to-end observability demo.
 
-## 9. Production deployment *(Task 7 â€” 7 marks)*
+## 9. Production deployment *(Task 7 — 7 marks)*
 
 Two complementary deployment paths are provided.
 
@@ -252,10 +252,10 @@ End-to-end verification (executed against the live URL):
 
 ---
 
-## 10. Monitoring and logging *(Task 8 â€” 3 marks)*
+## 10. Monitoring and logging *(Task 8 — 3 marks)*
 
 - **Metrics:** the API uses `prometheus_client` to expose three families
-  on `/metrics` â€” `heart_api_requests_total{endpoint,method,status}`,
+  on `/metrics` — `heart_api_requests_total{endpoint,method,status}`,
   `heart_api_request_seconds_bucket{endpoint,le}`, and
   `heart_api_predictions_total{label}`.
 - **Scraping:** `monitoring/prometheus.yml` declares a `heart-api` job
@@ -276,9 +276,9 @@ End-to-end verification (executed against the live URL):
 
 ---
 
-## 11. Documentation and reporting *(Task 9 â€” 2 marks)*
+## 11. Documentation and reporting *(Task 9 — 2 marks)*
 
-- This document â€” `docs/REPORT.md` (also exported as `REPORT.docx` and `REPORT.pdf`).
+- This document — `docs/REPORT.md` (also exported as `REPORT.docx` and `REPORT.pdf`).
 - `README.md` covers setup, Docker, Kubernetes, Render, CI/CD, and layout.
 - `docs/architecture.md` includes a Mermaid + ASCII architecture diagram.
 - `screenshots/` contains 15 PNGs referenced from this report and the
@@ -288,19 +288,18 @@ End-to-end verification (executed against the live URL):
 
 ## 12. Deliverables checklist
 
-| PDF deliverable | Where |
-|---|---|
-| GitHub repo | `https://github.com/ddmtech2025cs05056/heart-disease-mlops` |
-| Code, Dockerfile, requirements | repo root |
-| Cleaned dataset + download script | `data/`, `src/data/{download,preprocess}.py` |
-| Notebooks (EDA, training, inference) | `notebooks/01_eda.ipynb`, `notebooks/02_modeling.ipynb` |
-| Tests folder | `tests/` (4 files, 9 tests) |
-| GitHub Actions YAML | `.github/workflows/ci.yml` |
-| Deployment manifests + Helm chart | `deploy/k8s/`, `deploy/helm/heart-api/` |
-| Screenshot folder | `screenshots/` (19 PNGs) |
-| Final 10-page report (.pdf, .docx, .md) | `docs/REPORT.pdf`, `docs/REPORT.docx`, `docs/REPORT.md` |
-| Demo video | `docs/2026-05-09 17-51-37.mp4` |
-| Deployed API URL | <https://heart-disease-mlops-yhb7.onrender.com> (Render) â€” local: `kubectl port-forward svc/heart-api 8000:80` |
+Everything the assignment asks for is included in this submission:
+
+- The complete project source code, the Dockerfile and the pinned `requirements.txt` are in the GitHub repository: https://github.com/ddmtech2025cs05056/heart-disease-mlops
+- The cleaned dataset and the script that downloads and preprocesses it are under `data/` and `src/data/`.
+- Two Jupyter notebooks are provided in `notebooks/` — one for exploratory data analysis and one for modelling.
+- All unit and integration tests are in the `tests/` folder (four files, nine tests, all passing).
+- The GitHub Actions pipeline that runs lint, tests and the Docker build lives at `.github/workflows/ci.yml`.
+- The Kubernetes deployment manifests and the Helm chart are in `deploy/k8s/` and `deploy/helm/heart-api/`.
+- Screenshots covering every major step are collected in the `screenshots/` folder.
+- This final report is delivered in three formats: `docs/REPORT.pdf`, `docs/REPORT.docx` and `docs/REPORT.md`.
+- A short demo video that walks through the whole pipeline end-to-end is at `docs/2026-05-09 17-51-37.mp4`. The same video is also available on Google Drive at https://drive.google.com/file/d/106ABOgXefeEAvOQdUCnteJ9P6vjYF_M1/view.
+- The API is deployed and running publicly at https://heart-disease-mlops-yhb7.onrender.com (live URL). For a local run the same service can be reached with `kubectl port-forward svc/heart-api 8000:80` after applying the Kubernetes manifests.
 
 ---
 

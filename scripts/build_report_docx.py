@@ -25,20 +25,70 @@ def _add_code(doc: Document, code: str) -> None:
     run.font.color.rgb = RGBColor(0x33, 0x33, 0x33)
 
 
+_INLINE_RE = re.compile(
+    r"\*\*(?P<bold>[^*]+)\*\*"
+    r"|`(?P<code>[^`]+)`"
+    r"|\[(?P<linktext>[^\]]+)\]\((?P<linkurl>[^)]+)\)"
+    r"|<(?P<autolink>https?://[^>]+)>"
+)
+
+
+def _add_rich_runs(paragraph, text: str) -> None:
+    """Append runs to ``paragraph`` parsing **bold**, `code`, and [text](url)."""
+    pos = 0
+    for m in _INLINE_RE.finditer(text):
+        if m.start() > pos:
+            paragraph.add_run(text[pos:m.start()])
+        if m.group("bold") is not None:
+            r = paragraph.add_run(m.group("bold"))
+            r.bold = True
+        elif m.group("code") is not None:
+            r = paragraph.add_run(m.group("code"))
+            r.font.name = "Consolas"
+            r.font.size = Pt(10)
+            r.font.color.rgb = RGBColor(0x33, 0x33, 0x33)
+        elif m.group("linktext") is not None:
+            paragraph.add_run(m.group("linktext"))
+            url = m.group("linkurl")
+            if url and not url.startswith(("#", "REPORT.")):
+                r = paragraph.add_run(f" ({url})")
+                r.font.size = Pt(9)
+                r.font.color.rgb = RGBColor(0x55, 0x55, 0x55)
+        elif m.group("autolink") is not None:
+            r = paragraph.add_run(m.group("autolink"))
+            r.font.color.rgb = RGBColor(0x1F, 0x49, 0x7D)
+        pos = m.end()
+    if pos < len(text):
+        paragraph.add_run(text[pos:])
+
+
+def _set_cell_rich(cell, text: str, bold: bool = False) -> None:
+    cell.text = ""
+    p = cell.paragraphs[0]
+    if bold:
+        # render entire cell as bold; still parse code spans for monospacing
+        for chunk in re.split(r"(`[^`]+`)", text):
+            if chunk.startswith("`") and chunk.endswith("`"):
+                r = p.add_run(chunk[1:-1])
+                r.bold = True
+                r.font.name = "Consolas"
+            else:
+                r = p.add_run(chunk)
+                r.bold = True
+    else:
+        _add_rich_runs(p, text)
+
+
 def _add_table(doc: Document, header: list[str], rows: list[list[str]]) -> None:
     n = len(header)
     t = doc.add_table(rows=1 + len(rows), cols=n)
     t.style = "Light Grid Accent 1"
     for i, h in enumerate(header):
-        cell = t.rows[0].cells[i]
-        cell.text = h
-        for r in cell.paragraphs[0].runs:
-            r.bold = True
+        _set_cell_rich(t.rows[0].cells[i], h, bold=True)
     for ri, row in enumerate(rows, start=1):
-        # pad / trim to header width to avoid ragged-row IndexError
         padded = (row + [""] * n)[:n]
         for ci, val in enumerate(padded):
-            t.rows[ri].cells[ci].text = val
+            _set_cell_rich(t.rows[ri].cells[ci], val)
     doc.add_paragraph()
 
 
@@ -110,13 +160,15 @@ def convert() -> Path:
         elif line.startswith("### "):
             doc.add_heading(line[4:].strip(), level=2)
         elif line.startswith("- ") or line.startswith("* "):
-            doc.add_paragraph(line[2:].strip(), style="List Bullet")
+            p = doc.add_paragraph(style="List Bullet")
+            _add_rich_runs(p, line[2:].strip())
         elif line.startswith("---"):
             doc.add_paragraph("")  # section break
         elif line.strip() == "":
             doc.add_paragraph("")
         else:
-            doc.add_paragraph(line)
+            p = doc.add_paragraph()
+            _add_rich_runs(p, line)
         i += 1
 
     flush_table()

@@ -1,4 +1,4 @@
-# Heart Disease Prediction â€” End-to-End MLOps Project
+# Heart Disease Prediction — End-to-End MLOps Project
 
 [![CI](https://github.com/ddmtech2025cs05056/heart-disease-mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/ddmtech2025cs05056/heart-disease-mlops/actions/workflows/ci.yml)
 [![Lint](https://github.com/ddmtech2025cs05056/heart-disease-mlops/actions/workflows/lint.yml/badge.svg)](https://github.com/ddmtech2025cs05056/heart-disease-mlops/actions/workflows/lint.yml)
@@ -23,28 +23,28 @@
 
 A reproducible, production-grade MLOps pipeline that predicts heart-disease
 risk from patient health records using the **UCI Heart Disease (Cleveland)**
-dataset. It covers EDA â†’ training â†’ MLflow tracking â†’ packaging â†’ CI/CD â†’
-containerization â†’ Kubernetes/Render deployment â†’ Prometheus + Grafana
+dataset. It covers EDA → training → MLflow tracking → packaging → CI/CD →
+containerization → Kubernetes/Render deployment → Prometheus + Grafana
 monitoring.
 
-> Submitted for **MLOps (S2-25_AMLCSZG523) â€” Assignment 1**.
+> Submitted for **MLOps (S2-25_AMLCSZG523) — Assignment 1**.
 
 ---
 
 ## 1. Deliverables
 
-| # | Deliverable | Location |
-|---|---|---|
-| a | Source code, Dockerfile, requirements | this repository |
-| a | Cleaned dataset + download script | `src/data/download.py`, `src/data/preprocess.py` |
-| a | Notebooks (EDA + modelling) | `notebooks/01_eda.ipynb`, `notebooks/02_modeling.ipynb` |
-| a | Unit tests | `tests/` |
-| a | GitHub Actions workflow | `.github/workflows/ci.yml` |
-| a | Deployment manifests + Helm chart | `deploy/k8s/`, `deploy/helm/heart-api/` |
-| a | Screenshots | `screenshots/` |
-| a | Final 10-page report | `docs/REPORT.pdf`, `docs/REPORT.docx`, `docs/REPORT.md` |
-| b | Short demo video | `docs/2026-05-09 17-51-37.mp4` |
-| c | Deployed API URL / local instructions | see Â§5 |
+Everything the assignment asks for is included in this repository:
+
+- The complete project source code, the Dockerfile and the pinned `requirements.txt`.
+- The cleaned dataset and the scripts that download and preprocess it (`src/data/download.py`, `src/data/preprocess.py`).
+- Two Jupyter notebooks — one for exploratory data analysis and one for modelling — in `notebooks/`.
+- Unit and integration tests in the `tests/` folder.
+- The GitHub Actions CI workflow at `.github/workflows/ci.yml`.
+- Kubernetes deployment manifests and a Helm chart under `deploy/k8s/` and `deploy/helm/heart-api/`.
+- Screenshots of every major step in the `screenshots/` folder.
+- The final report in three formats: `docs/REPORT.pdf`, `docs/REPORT.docx`, `docs/REPORT.md`.
+- A short demo video walking through the whole pipeline at `docs/2026-05-09 17-51-37.mp4` (the same video is also linked at the top of this file as a Google Drive stream).
+- The deployed public API URL — https://heart-disease-mlops-yhb7.onrender.com — plus instructions for running it locally (see §5).
 
 ---
 
@@ -114,16 +114,16 @@ docker run --rm -p 8000:8000 heart-api:latest
 
 ## 5. Deployment
 
-### Option A â€” Public URL via Render.com (recommended)
+### Option A — Public URL via Render.com (recommended)
 
 1. Push this repo to GitHub.
-2. On <https://dashboard.render.com> â†’ **New â†’ Blueprint** â†’ connect repo.
+2. On <https://dashboard.render.com> → **New → Blueprint** → connect repo.
 3. Render reads `deploy/render/render.yaml` and provisions a public
    Docker web service on the free tier with `/health` health-checks.
 4. The public URL appears as `https://heart-api-xxxx.onrender.com`.
    Replace `<DEPLOYED_URL>` below and in `docs/REPORT.md`.
 
-### Option B â€” Local Kubernetes (Minikube / Docker Desktop)
+### Option B — Local Kubernetes (Minikube / Docker Desktop)
 
 ```bash
 # Raw manifests
@@ -144,10 +144,10 @@ kubectl port-forward svc/heart-api 8000:80
 
 `.github/workflows/ci.yml` runs on every push / PR:
 
-1. **Lint** â€” `ruff check` + `black --check`
-2. **Test** â€” `pytest --cov=src`
-3. **Train** â€” smoke train on the real UCI dataset, upload `models/` artefact
-4. **Docker** â€” build the image, run it, probe `/health`
+1. **Lint** — `ruff check` + `black --check`
+2. **Test** — `pytest --cov=src`
+3. **Train** — smoke train on the real UCI dataset, upload `models/` artefact
+4. **Docker** — build the image, run it, probe `/health`
 
 Pipeline fails fast on lint, test, train, or container errors.
 
@@ -172,4 +172,4 @@ Dockerfile, docker-compose.yml, Makefile, requirements.txt, environment.yml
 
 ## 8. License
 
-MIT â€” see `LICENSE`.
+MIT — see `LICENSE`.
